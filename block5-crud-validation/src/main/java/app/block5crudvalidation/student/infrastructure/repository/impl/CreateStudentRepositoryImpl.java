@@ -17,7 +17,7 @@ public class CreateStudentRepositoryImpl implements CreateStudentRepository {
 
     @Override
     public Long save(Student student) {
-        StudentJpa studentJpa = StudentEntityMapper.INSTANCE.toEntityJpa(student);
+        StudentJpa studentJpa = StudentEntgit statusityMapper.INSTANCE.toEntityJpa(student);
         return studentRepositoryJpa.save(studentJpa).getIdStudent();
     }
 }
