@@ -3,25 +3,26 @@ package app.block5crudvalidation.person.infrastructure.controller.dto.output;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class PersonOutputDto {
 
     @NonNull
-    private Long id;
+    private Long idPerson;
+
+    @NonNull
+    private String username;
+
+    @NonNull
+    private String password;
 
     @NonNull
     private String name;
 
-    @NonNull
-    private String age;
-
-    @NonNull
-    private String bornPlace;
-
-    @NonNull
     private String surname;
 
     @NonNull
@@ -38,9 +39,9 @@ public class PersonOutputDto {
     private Boolean active;
 
     @NotNull
-    private Date createdDate;
+    private LocalDate createdDate;
 
     private String imageUrl;
 
-    private Date terminationDate;
+    private LocalDate terminationDate;
 }

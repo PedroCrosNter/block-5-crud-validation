@@ -24,11 +24,14 @@ public class RetrievePersonController {
     // GET: localhost:8080/people/{id}
     @GetMapping("/{idPerson}")
     public ResponseEntity<?> find(@PathVariable Long idPerson) {
+
         Person person = retrievePersonUseCase.find(idPerson);
 
-        return ResponseEntity.ok().body(
-                PersonDtoMapper.INSTANCE.toOutputDto(person)
-        );
+        return ResponseEntity
+                .ok()
+                .body(
+                        PersonDtoMapper.INSTANCE.toOutputDto(person)
+                );
     }
 
     // GET: localhost:8080/people
@@ -37,10 +40,12 @@ public class RetrievePersonController {
 
         List<Person> people = retrievePersonUseCase.findAll();
 
-//        List<PersonOutputDto> peopleOutputDto = PersonMapper.INSTANCE.toOutputDtoList(people);
         List<PersonOutputDto> peopleOutputDto = PersonDtoMapper.INSTANCE.toOutputDtoList(people);
 
-        return ResponseEntity.ok().body(peopleOutputDto);
+        return  ResponseEntity
+                .ok()
+                .body(
+                        peopleOutputDto
+                );
     }
-
 }

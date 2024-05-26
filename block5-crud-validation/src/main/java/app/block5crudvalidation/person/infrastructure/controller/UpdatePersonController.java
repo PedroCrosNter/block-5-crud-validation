@@ -19,13 +19,22 @@ public class UpdatePersonController {
 
     private final UpdatePersonUseCase updatePersonUseCase;
 
-    // PUT: localhost:8080/person
+
+    // PUT: localhost:8080/people
     /**
      * BODY: {
-     *      "id": 3,
-     *      "name": "Pedro",
-     *      "age": 19,
-     *      "bornPlace": "Jaén"
+     *     "idPerson": 2,
+     *     "username": "PEDROCROS", // length >= 6 && <= 10
+     *     "password": "12345678900987654321",
+     *     "name": "PEDRO",
+     *     "surname": "CROS",
+     *     "companyEmail": "pedro.cros@nter.es",
+     *     "personalEmail": "pedro.cros@gmail.com",
+     *     "city": "Jaén",
+     *     "active": true,
+     *     "createdDate": "2025-06-15T00:00:00Z",// "2024-05-25 17:10:00",
+     *     "imageUrl": "http://example.com/pedro.cros.jpg",
+     *     "terminationDate": "2025-06-15T00:00:00Z"
      * }
      */
     @PutMapping

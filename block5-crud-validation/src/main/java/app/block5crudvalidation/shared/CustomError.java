@@ -10,13 +10,14 @@ import java.time.LocalDateTime;
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
-public class ApiError {
+public class CustomError {
 
     @NonNull
-    private HttpStatus estado;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy hh:mm:ss")
-    private LocalDateTime fecha = LocalDateTime.now();
-    @NonNull
-    private String mensaje;
+    private HttpStatus status;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
+    private LocalDateTime datetime = LocalDateTime.now();
+
+    @NonNull
+    private String message;
 }

@@ -1,7 +1,7 @@
 package app.block5crudvalidation.person.application.mapper;
 
 import app.block5crudvalidation.person.domain.entity.Person;
-import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonInputDto;
+import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonCreateInputDto;
 import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonUpdateInputDto;
 import app.block5crudvalidation.person.infrastructure.repository.jpa.entity.PersonJpa;
 import org.mapstruct.Mapper;
@@ -20,21 +20,20 @@ public interface PersonEntityMapper {
 // ##########################################################################################
 // ##################################### TO ENTITY ##########################################
 // ##########################################################################################
-    Person toEntity(PersonInputDto personInputDto);
+    Person toEntity(PersonCreateInputDto personCreateInputDto);
 
     Person toEntity(PersonUpdateInputDto personUpdateInputDto);
 
-//    @Mapping(source = "idPerson", target = "idPerson")
     Person toEntity(PersonJpa personJpa);
 
     void toEntity(Person source, @MappingTarget PersonJpa target);
 
-    // ########################################## LIST #########################################
+// ########################################## LIST #########################################
     @Named("toEntityListFromJpa")
     List<Person> toEntityListFromJpa(List<PersonJpa> peopleJpa);
 
     @Named("toEntityListFromInputDto")
-    List<Person> toEntityListFromInputDto(List<PersonInputDto> peopleInputDtoList);
+    List<Person> toEntityListFromInputDto(List<PersonCreateInputDto> peopleInputDtoList);
 
 
 // ##########################################################################################
@@ -44,9 +43,9 @@ public interface PersonEntityMapper {
 
     PersonJpa toEntityJpa(PersonJpa personJpa);
 
-    PersonJpa toEntityJpa(PersonInputDto personInputDto);
+    PersonJpa toEntityJpa(PersonCreateInputDto personCreateInputDto);
 
-    // ########################################## LIST #########################################
+// ########################################## LIST #########################################
     List<PersonJpa> toEntityJpaList(List<Person> people);
 
     Iterable<PersonJpa> toEntityJpaIterable(List<Person> people);

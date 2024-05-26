@@ -2,16 +2,11 @@ package app.block5crudvalidation.person.infrastructure.repository.impl;
 
 import app.block5crudvalidation.person.application.mapper.PersonEntityMapper;
 import app.block5crudvalidation.person.domain.entity.Person;
-import app.block5crudvalidation.person.domain.repository.CreatePersonRepository;
 import app.block5crudvalidation.person.domain.repository.UpdatePersonRepository;
 import app.block5crudvalidation.person.infrastructure.repository.jpa.PersonRepositoryJpa;
-import app.block5crudvalidation.person.infrastructure.repository.jpa.entity.PersonJpa;
-import app.block5crudvalidation.shared.exceptions.PersonNotFoundException;
+import app.block5crudvalidation.shared.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -22,6 +17,7 @@ public class UpdatePersonRepositoryImpl implements UpdatePersonRepository {
 
     @Override
     public Person update(Person person) {
+        
         return personRepositoryJpa
                 .findById(person.getIdPerson())
                 .map(existingPersonJpa -> {
@@ -33,7 +29,7 @@ public class UpdatePersonRepositoryImpl implements UpdatePersonRepository {
                 // Map to Entity
                 .map(PersonEntityMapper.INSTANCE::toEntity)
                 .orElseThrow(
-                        () -> new PersonNotFoundException(person.getIdPerson())
+                        () -> new EntityNotFoundException(Person.class, person.getIdPerson())
                 );
     }
 }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "person")
@@ -17,8 +17,8 @@ public class PersonJpa {
     @Column(name = "id_person")
     private Long idPerson;
 
-    @Column(name = "user", length = 10, nullable = false)
-    private String user;
+    @Column(name = "username", length = 10, nullable = false)
+    private String username;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -43,12 +43,12 @@ public class PersonJpa {
 
     @Column(name = "created_date", nullable = false)
 //    @Temporal(TemporalType.DATE)
-    private Date createdDate;
+    private LocalDate createdDate;
 
     @Column(name = "image_url")
     private String imageUrl;
 
     @Column(name = "termination_date")
 //    @Temporal(TemporalType.DATE)
-    private Date terminationDate;
+    private LocalDate terminationDate;
 }

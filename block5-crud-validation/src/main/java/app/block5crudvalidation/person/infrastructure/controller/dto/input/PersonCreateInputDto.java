@@ -3,25 +3,24 @@ package app.block5crudvalidation.person.infrastructure.controller.dto.input;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
 //import javax.validation.constraints.Size;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonInputDto {
+@Getter
+@Setter
+public class PersonCreateInputDto {
+
+    @NonNull
+    private String username;
+
+    @NonNull
+    private String password;
 
     @NonNull
     private String name;
 
-    @NonNull
-    private String age;
-
-    @NonNull
-    private String bornPlace;
-
-    @NonNull
     private String surname;
 
     @NonNull
@@ -38,10 +37,10 @@ public class PersonInputDto {
     private Boolean active;
 
     @NotNull
-    private Date createdDate;
+    private LocalDate createdDate;
 
     private String imageUrl;
 
-    private Date terminationDate;
+    private LocalDate terminationDate;
 }
 

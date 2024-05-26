@@ -1,10 +1,12 @@
 package app.block5crudvalidation.person.application.mapper;
 
 import app.block5crudvalidation.person.domain.entity.Person;
-import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonInputDto;
+import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonCreateInputDto;
 import app.block5crudvalidation.person.infrastructure.controller.dto.output.PersonOutputDto;
 import app.block5crudvalidation.person.infrastructure.repository.jpa.entity.PersonJpa;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -14,20 +16,35 @@ public interface PersonDtoMapper {
     PersonDtoMapper INSTANCE = Mappers.getMapper(PersonDtoMapper.class);
 
 
-    // ##########################################################################################
+// ##########################################################################################
 // ##################################### TO InputDto ########################################
 // ##########################################################################################
-    PersonInputDto toInputDto(Person person);
+    PersonCreateInputDto toInputDto(Person person);
 
-    PersonInputDto toInputDto(PersonJpa personJpa);
+    PersonCreateInputDto toInputDto(PersonJpa personJpa);
 
 
-    // ##########################################################################################
+// ##########################################################################################
 // ##################################### TO OutputDto #######################################
 // ##########################################################################################
     PersonOutputDto toOutputDto(Person person);
 
     PersonOutputDto toOutputDto(PersonJpa personJpa);
 
+    // Sin esto no funciona
+    @Mappings({
+            @Mapping(source = "idPerson", target = "idPerson"),
+            @Mapping(source = "username", target = "username"),
+            @Mapping(source = "password", target = "password"),
+            @Mapping(source = "name", target = "name"),
+            @Mapping(source = "surname", target = "surname"),
+            @Mapping(source = "companyEmail", target = "companyEmail"),
+            @Mapping(source = "personalEmail", target = "personalEmail"),
+            @Mapping(source = "city", target = "city"),
+            @Mapping(source = "active", target = "active"),
+            @Mapping(source = "createdDate", target = "createdDate"),
+            @Mapping(source = "imageUrl", target = "imageUrl"),
+            @Mapping(source = "terminationDate", target = "terminationDate")
+    })
     List<PersonOutputDto> toOutputDtoList(List<Person> people);
 }

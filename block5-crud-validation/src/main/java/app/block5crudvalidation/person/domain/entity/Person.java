@@ -5,16 +5,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDate;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Person {
 
     private Long idPerson;
-    private String user;
+    private String username;
     private String password;
     private String name;
     private String surname;
@@ -22,7 +22,7 @@ public class Person {
     private String personalEmail;
     private String city;
     private Boolean active;
-    private Date createdDate;
+    private LocalDate createdDate;
     private String imageUrl;
-    private Date terminationDate;
+    private LocalDate terminationDate;
 }

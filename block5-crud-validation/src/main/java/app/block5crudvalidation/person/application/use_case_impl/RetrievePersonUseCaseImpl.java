@@ -3,6 +3,7 @@ package app.block5crudvalidation.person.application.use_case_impl;
 import app.block5crudvalidation.person.application.RetrievePersonUseCase;
 import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.person.domain.repository.RetrievePersonRepository;
+import app.block5crudvalidation.shared.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +17,17 @@ public class RetrievePersonUseCaseImpl implements RetrievePersonUseCase {
 
 
     @Override
-    public Person find(Long idPerson) {
-        return retrievePersonRepository.find(idPerson);
+    public Person find(Long idPerson) throws EntityNotFoundException {
+
+        Person person;
+
+        try {
+            person = retrievePersonRepository.find(idPerson);
+        } catch (Exception e) {
+            throw new EntityNotFoundException(Person.class, idPerson);
+        }
+
+        return person;
     }
 
     @Override
