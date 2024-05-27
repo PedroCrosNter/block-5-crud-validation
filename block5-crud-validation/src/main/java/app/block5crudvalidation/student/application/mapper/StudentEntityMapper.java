@@ -19,36 +19,44 @@ public interface StudentEntityMapper {
 // ##################################### TO ENTITY ##########################################
 // ##########################################################################################
 
-    @Mappings({
-//            @Mapping(source = "idPerson", target = "idPerson"),
-            @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
-//            @Mapping(source = "idTeacher", target = "idTeacher"),
-            @Mapping(source = "branch", target = "branch", ignore = true)
-    })
+//    @Mappings({
+////            @Mapping(source = "idPerson", target = "idPerson"),
+//            @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
+////            @Mapping(source = "idTeacher", target = "idTeacher"),
+//            @Mapping(source = "branch", target = "branch", ignore = true)
+//    })
     Student toEntity(StudentCreateInputDto studentCreateInputDto);
 
     Student toEntity(StudentUpdateInputDto studentUpdateInputDto);
 
-    Student toEntity(StudentJpa personJpa);
+    @Mappings({
+            @Mapping(source = "teacherJpa", target = "teacher"),
+            @Mapping(source = "personJpa", target = "person"),
+    })
+    Student toEntity(StudentJpa studentJpa);
 
     void toEntity(Student source, @MappingTarget StudentJpa target);
 
 // ########################################## LIST #########################################
     @Named("toEntityListFromJpa")
-    List<Student> toEntityListFromJpa(List<StudentJpa> peopleJpa);
+    List<Student> toEntityListFromJpa(List<StudentJpa> studentsJpa);
 
     @Named("toEntityListFromInputDto")
-    List<Student> toEntityListFromInputDto(List<StudentCreateInputDto> peopleInputDtoList);
+    List<Student> toEntityListFromInputDto(List<StudentCreateInputDto> studentsInputDtoList);
 
 
 // ##########################################################################################
 // ##################################### TO ENTITY JPA ######################################
 // ##########################################################################################
+    @Mappings({
+            @Mapping(source = "teacher", target = "teacherJpa"),
+            @Mapping(source = "person", target = "personJpa"),
+    })
     StudentJpa toEntityJpa(Student student);
 
-    StudentJpa toEntityJpa(StudentJpa personJpa);
+    StudentJpa toEntityJpa(StudentJpa studentJpa);
 
-    StudentJpa toEntityJpa(StudentCreateInputDto personCreateInputDto);
+    StudentJpa toEntityJpa(StudentCreateInputDto studentCreateInputDto);
 
 // ########################################## LIST #########################################
     List<StudentJpa> toEntityJpaList(List<Student> students);

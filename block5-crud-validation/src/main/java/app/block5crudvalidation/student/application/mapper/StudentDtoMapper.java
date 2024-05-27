@@ -28,6 +28,13 @@ public interface StudentDtoMapper {
 // ##########################################################################################
 // ##################################### TO OutputDto #######################################
 // ##########################################################################################
+        @Mappings({
+                @Mapping(source = "idStudent", target = "idStudent"),
+                @Mapping(source = "person", target = "person"),
+                @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
+                @Mapping(source = "teacher", target = "teacherOutputDto"),
+                @Mapping(source = "branch", target = "branch")
+        })
         StudentOutputDto toOutputDto(Student student);
 
         StudentOutputDto toOutputDto(StudentJpa studentJpa);

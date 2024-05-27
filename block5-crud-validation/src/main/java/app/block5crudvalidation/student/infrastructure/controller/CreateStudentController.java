@@ -1,6 +1,8 @@
 package app.block5crudvalidation.student.infrastructure.controller;
 
 import app.block5crudvalidation.student.application.CreateStudentUseCase;
+import app.block5crudvalidation.student.application.mapper.StudentEntityMapper;
+import app.block5crudvalidation.student.domain.entity.Student;
 import app.block5crudvalidation.student.infrastructure.controller.dto.input.StudentCreateInputDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,6 +31,9 @@ public class CreateStudentController {
      */
     @PostMapping
     public ResponseEntity<Long> save(@RequestBody StudentCreateInputDto studentCreateInputDto) {
+
+        // Mapper FROM InputDto TO StudentJpa
+        Student student = StudentEntityMapper.INSTANCE.toEntity(studentCreateInputDto);
 
         // Applying use case
         Long idStudent = createStudentUseCase.save(studentCreateInputDto);

@@ -3,8 +3,13 @@ package app.block5crudvalidation.student.infrastructure.controller.dto.output;
 import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.shared.enums.Branch;
 import app.block5crudvalidation.teacher.domain.entity.Teacher;
-import lombok.NonNull;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class StudentOutputDto {
 
     @NonNull
@@ -14,7 +19,7 @@ public class StudentOutputDto {
     private Person person;
 
     @NonNull
-    private int numHoursWeek;
+    private Integer numHoursWeek;
 
     private Teacher teacher;
 

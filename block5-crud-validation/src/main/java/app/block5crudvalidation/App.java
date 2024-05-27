@@ -47,6 +47,11 @@ public class App {
         /**
          * ¿Excepción cuando hago un GET |-> localhost:8080/people y devuelve "[]"?
          */
+
+        /**
+         * TODO hacer findById student y ver por qué Person dentro de Teacher es NULL
+         * además hacer findAll()
+         */
     }
 
 }
