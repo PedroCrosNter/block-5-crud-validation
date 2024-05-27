@@ -28,6 +28,7 @@ public interface TeacherDtoMapper {
 // ##########################################################################################
 // ##################################### TO OutputDto #######################################
 // ##########################################################################################
+//    @Mapping(source = "teacher.person", target = "personOutputDto")
     TeacherOutputDto toOutputDto(Teacher teacher);
 
     TeacherOutputDto toOutputDto(TeacherJpa teacherJpa);

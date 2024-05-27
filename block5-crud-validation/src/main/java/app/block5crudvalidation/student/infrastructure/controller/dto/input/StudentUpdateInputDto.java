@@ -1,8 +1,6 @@
 package app.block5crudvalidation.student.infrastructure.controller.dto.input;
 
-import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.shared.enums.Branch;
-import app.block5crudvalidation.teacher.domain.entity.Teacher;
 import lombok.*;
 
 @NoArgsConstructor
@@ -15,13 +13,13 @@ public class StudentUpdateInputDto {
     private Long idStudent;
 
     @NonNull // Foreign key
-    private Person person;
+    private Long idPerson;
 
     @NonNull
-    private int numHoursWeek;
+    private Integer numHoursWeek;
 
     @NonNull // Foreign key
-    private Teacher teacher;
+    private Long idTeacher;
 
     @NonNull
     private Branch branch;

@@ -18,7 +18,9 @@ public class DeletePersonController {
 
     // DELETE: localhost:8080/people/{idPerson}
     @DeleteMapping("/{idPerson}")
-    public ResponseEntity<?> delete(@PathVariable Long idPerson) {
+    public ResponseEntity delete(@PathVariable Long idPerson) {
+        // TODO devolver NOT_FOUND cuando el id no se ha encontrado : ver
+        // TODO devolver NOT_CONTENT cuando el id se ha encontrado y se ha borrado
         // Delete by ID
         deletePersonUseCase.delete(idPerson);
 

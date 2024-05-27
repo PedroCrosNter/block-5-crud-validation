@@ -17,6 +17,8 @@ public class App {
 
         /**
          *  ¿El paquete "use_case_impl" es con snake_case al final?
+         *
+         *  => SIN snake case aunque se pueda
          */
 
         /**
@@ -35,6 +37,15 @@ public class App {
 
         /**
          * UpdateStudentRepository, ¿en la firma devolver "Objeto" o "Long" o nada*?
+         */
+
+
+        /**
+         * Comprobar si cuando pongo @NonNull de lombok en un DTO en postman da error
+         */
+
+        /**
+         * ¿Excepción cuando hago un GET |-> localhost:8080/people y devuelve "[]"?
          */
     }
 

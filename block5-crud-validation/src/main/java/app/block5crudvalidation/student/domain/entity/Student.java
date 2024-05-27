@@ -16,7 +16,7 @@ public class Student {
 
     private Long idStudent;
     private Person person;
-    private int numHoursWeek;
+    private Integer numHoursWeek;
     private Teacher teacher;
     private Branch branch;
 }

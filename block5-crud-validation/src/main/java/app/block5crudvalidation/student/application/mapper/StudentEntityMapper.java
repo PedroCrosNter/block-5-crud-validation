@@ -20,10 +20,9 @@ public interface StudentEntityMapper {
 // ##########################################################################################
 
     @Mappings({
-            @Mapping(source = "idStudent", target = "idStudent"),
-            @Mapping(source = "idPerson", target = "personJpa.idPerson"),
+//            @Mapping(source = "idPerson", target = "idPerson"),
             @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
-            @Mapping(source = "idTeacher", target = "teacherJpa.idTeacher"),
+//            @Mapping(source = "idTeacher", target = "idTeacher"),
             @Mapping(source = "branch", target = "branch", ignore = true)
     })
     Student toEntity(StudentCreateInputDto studentCreateInputDto);

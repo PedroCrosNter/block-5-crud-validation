@@ -18,7 +18,7 @@ public class StudentJpa {
     @Column(name = "id_student")
     private Long idStudent;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_person", nullable = false)
     private PersonJpa personJpa;
 
@@ -32,4 +32,12 @@ public class StudentJpa {
     @Column(name = "branch", nullable = false)
     @Enumerated(EnumType.STRING)
     private Branch branch;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "teacher_subject",
+//            joinColumns = @JoinColumn(name = "id_teacher"),
+//            inverseJoinColumns = @JoinColumn(name = "id_subject")
+//    )
+//    private Set<SubjectJpa> subjects;
 }

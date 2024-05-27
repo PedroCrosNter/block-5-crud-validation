@@ -4,14 +4,12 @@ import app.block5crudvalidation.teacher.domain.entity.Teacher;
 import app.block5crudvalidation.teacher.infrastructure.controller.dto.input.TeacherCreateInputDto;
 import app.block5crudvalidation.teacher.infrastructure.controller.dto.input.TeacherUpdateInputDto;
 import app.block5crudvalidation.teacher.infrastructure.repository.jpa.entity.TeacherJpa;
-import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.Mappings;
-import org.mapstruct.Named;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
+@Mapper(componentModel = "spring")
 public interface TeacherEntityMapper {
 
     TeacherEntityMapper INSTANCE = Mappers.getMapper(TeacherEntityMapper.class);
@@ -21,17 +19,17 @@ public interface TeacherEntityMapper {
 // ##################################### TO ENTITY ##########################################
 // ##########################################################################################
 
-    @Mappings({
-            @Mapping(source = "idStudent", target = "idStudent"),
-            @Mapping(source = "idPerson", target = "teacherJpa.idPerson"),
-            @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
-            @Mapping(source = "idTeacher", target = "teacherJpa.idTeacher"),
-            @Mapping(source = "branch", target = "branch", ignore = true)
-    })
-    Teacher toEntity(TeacherCreateInputDto studentCreateInputDto);
+//    @Mappings({
+////            @Mapping(source = "idStudent", target = "idStudent"),
+//            @Mapping(source = "idPerson", target = "idPerson"),
+//            @Mapping(source = "comments", target = "comments"),
+//            @Mapping(source = "branch", target = "branch", ignore = true)
+//    })
+    Teacher toEntity(TeacherCreateInputDto teacherCreateInputDto);
 
-    Teacher toEntity(TeacherUpdateInputDto studentUpdateInputDto);
+    Teacher toEntity(TeacherUpdateInputDto teacherUpdateInputDto);
 
+    @Mapping(source = "personJpa", target = "person")
     Teacher toEntity(TeacherJpa teacherJpa);
 
     void toEntity(Teacher source, @MappingTarget TeacherJpa target);
@@ -44,9 +42,14 @@ public interface TeacherEntityMapper {
     List<Teacher> toEntityListFromInputDto(List<TeacherCreateInputDto> teacherInputDtoList);
 
 
-    // ##########################################################################################
+// ##########################################################################################
 // ##################################### TO ENTITY JPA ######################################
 // ##########################################################################################
+//    @Mappings({
+//        @Mapping(source = "idPerson", target = "idPerson"),
+//        @Mapping(source = "comments", target = "comments"),
+//        @Mapping(source = "branch", target = "branch", ignore = true)
+//    })
     TeacherJpa toEntityJpa(Teacher teacher);
 
     TeacherJpa toEntityJpa(TeacherJpa teacherJpa);
@@ -54,7 +57,7 @@ public interface TeacherEntityMapper {
     TeacherJpa toEntityJpa(TeacherCreateInputDto teacherCreateInputDto);
 
     // ########################################## LIST #########################################
-    List<TeacherJpa> toEntityJpaList(List<Teacher> students);
+    List<TeacherJpa> toEntityJpaList(List<Teacher> teachers);
 
-    Iterable<TeacherJpa> toEntityJpaIterable(List<Teacher> students);
+    Iterable<TeacherJpa> toEntityJpaIterable(List<Teacher> teachers);
 }

@@ -1,5 +1,6 @@
 package app.block5crudvalidation.person.infrastructure.controller.dto.output;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -9,6 +10,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class PersonOutputDto {
 
     @NonNull

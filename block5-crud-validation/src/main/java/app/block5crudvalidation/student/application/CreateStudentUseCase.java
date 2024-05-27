@@ -1,8 +1,8 @@
 package app.block5crudvalidation.student.application;
 
-import app.block5crudvalidation.student.domain.entity.Student;
+import app.block5crudvalidation.student.infrastructure.controller.dto.input.StudentCreateInputDto;
 
 public interface CreateStudentUseCase {
 
-    Long save(Student student);
+    Long save(StudentCreateInputDto studentCreateInputDto);
 }
