@@ -7,12 +7,16 @@ import app.block5crudvalidation.student.application.mapper.StudentEntityMapper;
 import app.block5crudvalidation.student.domain.entity.Student;
 import app.block5crudvalidation.student.domain.repository.CreateStudentRepository;
 import app.block5crudvalidation.student.infrastructure.controller.dto.input.StudentCreateInputDto;
+import app.block5crudvalidation.subject.application.RetrieveSubjectUseCase;
+import app.block5crudvalidation.subject.domain.entity.Subject;
 import app.block5crudvalidation.teacher.application.RetrieveTeacherUseCase;
 import io.micrometer.common.util.StringUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +29,8 @@ public class CreateStudentUseCaseImpl implements CreateStudentUseCase {
         private final RetrievePersonUseCase retrievePersonUseCase;
         // -> RetrieveTeacher
         private final RetrieveTeacherUseCase retrieveTeacherUseCase;
+        // -> RetrieveSubject
+        private final RetrieveSubjectUseCase retrieveSubjectUseCase;
 
 
     @Override
@@ -48,6 +54,13 @@ public class CreateStudentUseCaseImpl implements CreateStudentUseCase {
                 // TODO lanzar excepción en caso de que 'studentCreateInputDto.getIdTeacher()' no exista en bd
                 retrieveTeacherUseCase.find(studentCreateInputDto.getIdTeacher())
         );
+
+        // SET -> Subjects
+        List<Subject> subjects = studentCreateInputDto.getIdSubjects().stream()
+                .map(retrieveSubjectUseCase::findById)
+                .collect(Collectors.toList());
+
+        student.setSubjects(subjects);
 
         // Repository -> SAVE(Student)
         return createStudentRepository.save(student);

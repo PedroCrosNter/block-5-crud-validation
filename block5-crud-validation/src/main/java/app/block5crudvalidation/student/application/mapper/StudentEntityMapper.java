@@ -32,6 +32,7 @@ public interface StudentEntityMapper {
     @Mappings({
             @Mapping(source = "teacherJpa", target = "teacher"),
             @Mapping(source = "personJpa", target = "person"),
+            @Mapping(source = "subjects", target = "subjects")
     })
     Student toEntity(StudentJpa studentJpa);
 

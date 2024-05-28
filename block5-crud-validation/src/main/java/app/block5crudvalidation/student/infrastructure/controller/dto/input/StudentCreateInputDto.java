@@ -3,6 +3,8 @@ package app.block5crudvalidation.student.infrastructure.controller.dto.input;
 import app.block5crudvalidation.shared.enums.Branch;
 import lombok.*;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,4 +22,6 @@ public class StudentCreateInputDto {
 
     @NonNull
     private Branch branch;
+
+    private List<Long> idSubjects;
 }

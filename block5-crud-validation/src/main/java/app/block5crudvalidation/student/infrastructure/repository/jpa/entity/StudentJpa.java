@@ -39,9 +39,9 @@ public class StudentJpa {
     @ManyToMany
     @JoinTable(
             name = "student_subject",
-            joinColumns = @JoinColumn(name = "id_student"),
-            inverseJoinColumns = @JoinColumn(name = "id_subject")
+            joinColumns = @JoinColumn(name = "fk_student"),//"id_student"),
+            inverseJoinColumns = @JoinColumn(name = "fk_subject")//"id_subject")
     )
+//    @ManyToMany(mappedBy = "students")
     private List<SubjectJpa> subjects;
-//    private Set<SubjectJpa> subjects;
 }

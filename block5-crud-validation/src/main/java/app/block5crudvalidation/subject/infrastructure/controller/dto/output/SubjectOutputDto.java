@@ -1,9 +1,6 @@
 package app.block5crudvalidation.subject.infrastructure.controller.dto.output;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,11 +8,12 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class SubjectOutputDto {
 
     private Long idSubject;
 
-    private Long idStudent;
+//    private Long idStudent;
 
     private String name;
 
@@ -24,4 +22,6 @@ public class SubjectOutputDto {
     private LocalDate initialDate;
 
     private LocalDate finishDate;
+
+//    private List<StudentOutputDto> students;
 }

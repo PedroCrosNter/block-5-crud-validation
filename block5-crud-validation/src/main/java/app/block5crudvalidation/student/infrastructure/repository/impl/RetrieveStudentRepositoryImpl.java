@@ -1,6 +1,5 @@
 package app.block5crudvalidation.student.infrastructure.repository.impl;
 
-import app.block5crudvalidation.shared.exceptions.EntityNotFoundException;
 import app.block5crudvalidation.student.application.mapper.StudentEntityMapper;
 import app.block5crudvalidation.student.domain.entity.Student;
 import app.block5crudvalidation.student.domain.repository.RetrieveStudentRepository;
@@ -21,15 +20,16 @@ public class RetrieveStudentRepositoryImpl implements RetrieveStudentRepository 
 
     @Override
     public Student findById(Long idStudent) {
-        studentRepositoryJpa.findById(idStudent);
-        return StudentEntityMapper.INSTANCE.toEntity(
-                studentRepositoryJpa.findById(idStudent)
-                        .orElseThrow( () -> new EntityNotFoundException(Student.class, idStudent) )
-        );
+//        studentRepositoryJpa.findById(idStudent);
+//        return StudentEntityMapper.INSTANCE.toEntity(
+//                studentRepositoryJpa.findById(idStudent)
+//                        .orElseThrow( () -> new EntityNotFoundException(Student.class, idStudent) )
+//        );
 
-//        StudentJpa studentJpa = studentRepositoryJpa.findById(idStudent).get();
-//        Student student = StudentEntityMapper.INSTANCE.toEntity(studentJpa);
-//        return student;
+        StudentJpa studentJpa = studentRepositoryJpa.findById(idStudent).get(); // --> StudentJpa ya viene con bucle infinito y al mapearlo se interumple el programa
+        Student student = StudentEntityMapper.INSTANCE.toEntity(studentJpa); // ==> CREA UN BUCLE INFINITO
+//        List<SubjectJpa> subjectJpaList = studentRepositoryJpa.findStudentsBySubjectId(studentJpa.getIdStudent());
+        return student;
     }
 
     @Override

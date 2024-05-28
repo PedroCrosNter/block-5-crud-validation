@@ -14,9 +14,10 @@ import java.time.LocalDate;
 public class Subject {
 
     private Long idSubject;
-    private Long idStudent;
+//    private Long idStudent;
     private String name;
     private String comment;
     private LocalDate initialDate;
     private LocalDate finishDate;
+//    private List<Student> students;
 }

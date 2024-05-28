@@ -1,8 +1,8 @@
 package app.block5crudvalidation.teacher.infrastructure.controller.dto.output;
 
-import app.block5crudvalidation.person.domain.entity.Person;
+import app.block5crudvalidation.person.infrastructure.controller.dto.output.PersonOutputDto;
 import app.block5crudvalidation.shared.enums.Branch;
-import app.block5crudvalidation.student.domain.entity.Student;
+import app.block5crudvalidation.student.infrastructure.controller.dto.output.StudentOutputDto;
 import lombok.*;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class TeacherOutputDto {
     @NonNull
     private Branch branch;
 
-    Person person;
+    PersonOutputDto person;
 
-    List<Student> students;
+    List<StudentOutputDto> students;
 }

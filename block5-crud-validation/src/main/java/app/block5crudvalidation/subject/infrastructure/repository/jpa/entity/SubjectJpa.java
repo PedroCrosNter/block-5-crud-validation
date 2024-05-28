@@ -19,11 +19,8 @@ public class SubjectJpa {
     @Column(name = "id_subject")
     private Long idSubject;
 
-    @ManyToMany(mappedBy = "subjects")
-    private List<StudentJpa> students;
-
-    @Column(name = "subject")
-    private String subject;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "comment")
     private String comment;
@@ -33,4 +30,13 @@ public class SubjectJpa {
 
     @Column(name = "finish_date")
     private LocalDate finishDate;
+
+//    @ManyToMany
+//    @JoinTable(
+//            name = "student_subject",
+//            joinColumns = @JoinColumn(name = "id_student"),
+//            inverseJoinColumns = @JoinColumn(name = "id_subject")
+//    )
+    @ManyToMany(mappedBy = "subjects")
+    private List<StudentJpa> students;
 }

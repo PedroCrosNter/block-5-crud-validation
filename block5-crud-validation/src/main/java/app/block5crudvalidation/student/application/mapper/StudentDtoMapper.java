@@ -33,7 +33,8 @@ public interface StudentDtoMapper {
                 @Mapping(source = "person", target = "person"),
                 @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
                 @Mapping(source = "teacher", target = "teacher"),
-                @Mapping(source = "branch", target = "branch")
+                @Mapping(source = "branch", target = "branch"),
+                @Mapping(source = "subjects", target = "subjects")
         })
         StudentOutputDto toOutputDto(Student student);
 

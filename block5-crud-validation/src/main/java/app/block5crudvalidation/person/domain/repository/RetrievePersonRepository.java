@@ -1,12 +1,12 @@
 package app.block5crudvalidation.person.domain.repository;
 
 import app.block5crudvalidation.person.domain.entity.Person;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface RetrievePersonRepository {
 
     Person find(Long idPerson);
 
-    List<Person> findAll();
+    Page<Person> findAll(Pageable pageable);
 }

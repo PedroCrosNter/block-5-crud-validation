@@ -1,9 +1,6 @@
 package app.block5crudvalidation.subject.infrastructure.controller.dto.input;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -11,9 +8,10 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Data
 public class SubjectCreateInputDto {
 
-    private Long idStudent;
+//    private Long idStudent;
 
     private String name;
 
@@ -22,4 +20,6 @@ public class SubjectCreateInputDto {
     private LocalDate initialDate;
 
     private LocalDate finishDate;
+
+//    private List<Long> idSubjects;
 }

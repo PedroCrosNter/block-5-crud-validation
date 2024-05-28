@@ -5,9 +5,9 @@ import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.person.domain.repository.RetrievePersonRepository;
 import app.block5crudvalidation.shared.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +31,7 @@ public class RetrievePersonUseCaseImpl implements RetrievePersonUseCase {
     }
 
     @Override
-    public List<Person> findAll() {
-        return retrievePersonRepository.findAll();
+    public Page<Person> findAll(Pageable pageable) {
+        return retrievePersonRepository.findAll(pageable);
     }
 }

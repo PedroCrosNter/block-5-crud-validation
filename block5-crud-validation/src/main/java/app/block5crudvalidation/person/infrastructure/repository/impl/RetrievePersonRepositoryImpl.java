@@ -4,13 +4,11 @@ import app.block5crudvalidation.person.application.mapper.PersonEntityMapper;
 import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.person.domain.repository.RetrievePersonRepository;
 import app.block5crudvalidation.person.infrastructure.repository.jpa.PersonRepositoryJpa;
-import app.block5crudvalidation.person.infrastructure.repository.jpa.entity.PersonJpa;
 import app.block5crudvalidation.shared.exceptions.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -32,10 +30,9 @@ public class RetrievePersonRepositoryImpl implements RetrievePersonRepository {
     }
 
     @Override
-    public List<Person> findAll() {
-        List<PersonJpa> personJpaList = personRepositoryJpa.findAll();
-        return personJpaList.stream()
-                .map(PersonEntityMapper.INSTANCE::toEntity)
-                .collect(Collectors.toList());
+    public Page<Person> findAll(Pageable pageable) {
+        return personRepositoryJpa.findAll(pageable)
+                .map(PersonEntityMapper.INSTANCE::toEntity);
     }
+
 }
