@@ -1,9 +1,9 @@
-package app.block5crudvalidation.person.application.mapper;
+package app.block5crudvalidation.subject.application.mapper;
 
-import app.block5crudvalidation.person.domain.entity.Person;
-import app.block5crudvalidation.person.infrastructure.controller.dto.input.PersonCreateInputDto;
-import app.block5crudvalidation.person.infrastructure.controller.dto.output.PersonOutputDto;
-import app.block5crudvalidation.person.infrastructure.repository.jpa.entity.PersonJpa;
+import app.block5crudvalidation.subject.domain.entity.Subject;
+import app.block5crudvalidation.subject.infrastructure.controller.dto.input.SubjectCreateInputDto;
+import app.block5crudvalidation.subject.infrastructure.controller.dto.output.SubjectOutputDto;
+import app.block5crudvalidation.subject.infrastructure.repository.jpa.entity.SubjectJpa;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -12,27 +12,26 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface PersonDtoMapper {
+public interface SubjectDtoMapper {
+    
+    SubjectDtoMapper INSTANCE = Mappers.getMapper(SubjectDtoMapper.class);
 
-    PersonDtoMapper INSTANCE = Mappers.getMapper(PersonDtoMapper.class);
 
-
-// ##########################################################################################
+    // ##########################################################################################
 // ##################################### TO InputDto ########################################
 // ##########################################################################################
-    PersonCreateInputDto toInputDto(Person person);
+    SubjectCreateInputDto toInputDto(Subject person);
 
-    PersonCreateInputDto toInputDto(PersonJpa personJpa);
+    SubjectCreateInputDto toInputDto(SubjectJpa subjectJpa);
 
 
-// ##########################################################################################
+    // ##########################################################################################
 // ##################################### TO OutputDto #######################################
 // ##########################################################################################
-    PersonOutputDto toOutputDto(Person person);
+    SubjectOutputDto toOutputDto(Subject person);
 
-    PersonOutputDto toOutputDto(PersonJpa personJpa);
+    SubjectOutputDto toOutputDto(SubjectJpa subjectJpa);
 
-    // Sin esto no funciona
     @Mappings({
             @Mapping(source = "idPerson", target = "idPerson"),
             @Mapping(source = "username", target = "username"),
@@ -47,5 +46,5 @@ public interface PersonDtoMapper {
             @Mapping(source = "imageUrl", target = "imageUrl"),
             @Mapping(source = "terminationDate", target = "terminationDate")
     })
-    List<PersonOutputDto> toOutputDtoList(List<Person> people);
+    List<SubjectOutputDto> toOutputDtoList(List<Subject> subjects);
 }

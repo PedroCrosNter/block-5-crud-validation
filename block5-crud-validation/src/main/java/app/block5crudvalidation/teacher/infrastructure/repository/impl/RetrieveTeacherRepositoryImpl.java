@@ -26,6 +26,14 @@ public class RetrieveTeacherRepositoryImpl implements RetrieveTeacherRepository 
                 teacherRepositoryJpa.findById(idTeacher)
                         .orElseThrow( () -> new EntityNotFoundException(Teacher.class, idTeacher))
         );
+
+//        TeacherJpa teacherJpa = teacherRepositoryJpa.findById(idTeacher).get();
+//        teacherJpa.getStudents();
+//
+//        Teacher teacher = TeacherEntityMapper.INSTANCE.toEntity(teacherJpa);
+//        teacher.getStudents();
+//
+//        return teacher;
     }
 
     @Override

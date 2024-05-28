@@ -2,7 +2,13 @@ package app.block5crudvalidation.teacher.domain.entity;
 
 import app.block5crudvalidation.person.domain.entity.Person;
 import app.block5crudvalidation.shared.enums.Branch;
-import lombok.*;
+import app.block5crudvalidation.student.domain.entity.Student;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,4 +20,5 @@ public class Teacher {
     private Person person;
     private String comments;
     private Branch branch;
+    private List<Student> students;
 }

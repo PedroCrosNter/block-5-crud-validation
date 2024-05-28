@@ -20,7 +20,6 @@ public class CreateTeacherRepositoryImpl implements CreateTeacherRepository {
         // We can validate here
 //        TeacherJpa teacherJpa = TeacherEntityMapper.INSTANCE.toEntityJpa(teacher);
 
-
         return teacherRepositoryJpa.save(
                 teacherForeignEntityMapper.toEntityJpa(teacher)
         ).getIdTeacher();

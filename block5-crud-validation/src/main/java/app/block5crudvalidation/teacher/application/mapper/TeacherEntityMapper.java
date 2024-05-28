@@ -9,7 +9,7 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring")//, uses = {PersonEntityMapper.class})
 public interface TeacherEntityMapper {
 
     TeacherEntityMapper INSTANCE = Mappers.getMapper(TeacherEntityMapper.class);
@@ -29,7 +29,12 @@ public interface TeacherEntityMapper {
 
     Teacher toEntity(TeacherUpdateInputDto teacherUpdateInputDto);
 
-    @Mapping(source = "personJpa", target = "person")
+    @Mappings({
+            @Mapping(source = "personJpa", target = "person"),
+            @Mapping(source = "students", target = "students"),
+//            @Mapping(source = "students.person", target = "person"),
+//            @Mapping(source = "students.teacher", target = "teacher"),
+    })
     Teacher toEntity(TeacherJpa teacherJpa);
 
     void toEntity(Teacher source, @MappingTarget TeacherJpa target);

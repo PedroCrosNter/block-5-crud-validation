@@ -23,7 +23,7 @@ public class RetrievePersonController {
 
     // GET: localhost:8080/people/{id}
     @GetMapping("/{idPerson}")
-    public ResponseEntity<?> find(@PathVariable Long idPerson) {
+    public ResponseEntity<PersonOutputDto> find(@PathVariable Long idPerson) {
 
         Person person = retrievePersonUseCase.find(idPerson);
 

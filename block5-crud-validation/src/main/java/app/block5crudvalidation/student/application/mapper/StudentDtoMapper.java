@@ -32,12 +32,19 @@ public interface StudentDtoMapper {
                 @Mapping(source = "idStudent", target = "idStudent"),
                 @Mapping(source = "person", target = "person"),
                 @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
-                @Mapping(source = "teacher", target = "teacherOutputDto"),
+                @Mapping(source = "teacher", target = "teacher"),
                 @Mapping(source = "branch", target = "branch")
         })
         StudentOutputDto toOutputDto(Student student);
 
-        StudentOutputDto toOutputDto(StudentJpa studentJpa);
+        @Mappings({
+                @Mapping(source = "idStudent", target = "idStudent"),
+                @Mapping(source = "personJpa", target = "person"),
+                @Mapping(source = "numHoursWeek", target = "numHoursWeek"),
+                @Mapping(source = "teacherJpa", target = "teacher"),
+                @Mapping(source = "branch", target = "branch")
+        })
+        StudentOutputDto toOutputDto(StudentJpa studentJpa); // Eliminar?
 
 
         @Mappings({

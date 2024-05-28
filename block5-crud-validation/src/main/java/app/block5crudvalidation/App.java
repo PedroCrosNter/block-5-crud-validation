@@ -37,6 +37,7 @@ public class App {
 
         /**
          * UpdateStudentRepository, ¿en la firma devolver "Objeto" o "Long" o nada*?
+         * => devolver el objeto
          */
 
 
@@ -51,6 +52,10 @@ public class App {
         /**
          * TODO hacer findById student y ver por qué Person dentro de Teacher es NULL
          * además hacer findAll()
+         */
+
+        /**
+         * TODO devolver un Boolean en Delete
          */
     }
 
